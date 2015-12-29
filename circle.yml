@@ -7,7 +7,7 @@ machine:
 dependencies:
   override:
     - docker info
-    - pip install s3cmd
+    - sudo pip install s3cmd
     - s3cmd get s3://packager-000-dev.avalonlabs.io/com/twiinlabs/accounts/0.4.172/accounts-0.4.172.war
     - docker build -t docker-registry-000-prod.avalonlabs.io/twiin-app-dev-accounts-v-000 .
     - docker push docker-registry-000-prod.avalonlabs.io/twiin-app-dev-accounts-v-000

@@ -8,7 +8,7 @@ RUN service nginx stop
 RUN apt-get install python-pip -y
 #RUN pip install s3cmd
 RUN pip install awscli
-RUN aws help
+RUN aws --version
 
 ENV DEBIAN_FRONTEND noninteractive
 

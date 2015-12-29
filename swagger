@@ -1,0 +1,19 @@
+server {
+    listen         80;
+    server_name    _; # Catch all, see http://nginx.org/en/docs/http/server_names.html
+    large_client_header_buffers 4 16k;
+    set $static_path /;
+
+    client_max_body_size 50M;
+
+    location / {
+        alias /var/lib/jetty/webapps/accounts-0.4.130;
+        proxy_pass http://127.0.0.1:8080/;
+        proxy_set_header Host $host:9000;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_read_timeout 3m;
+        proxy_send_timeout 3m;
+     }
+  
+}
+

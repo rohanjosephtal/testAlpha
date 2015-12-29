@@ -70,7 +70,9 @@ RUN set -xe \
 RUN mkdir /etc/service/jetty
 ADD start_jetty.sh /etc/service/jetty/run
 RUN chmod a+x /etc/service/jetty/run
-ADD /tmp/.s3cfg /root/
+ADD /tmp/.s3cfg /tmp/
+RUN touch /root/.s3cfg
+RUN mv /tmp/.s3cfg /root/.s3cfg
 RUN chmod 755 /root/.s3cfg
 
 WORKDIR $JETTY_BASE/webapps

@@ -6,9 +6,7 @@ RUN apt-get install nginx -y
 RUN apt-get install telnet -y
 RUN service nginx stop
 RUN apt-get install python-pip -y
-#RUN pip install s3cmd
-RUN pip install awscli
-RUN aws --version
+RUN pip install s3cmd
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -72,6 +70,7 @@ RUN set -xe \
 RUN mkdir /etc/service/jetty
 ADD start_jetty.sh /etc/service/jetty/run
 RUN chmod a+x /etc/service/jetty/run
+ADD .s3cfg /root/
 
 WORKDIR $JETTY_BASE/webapps
 

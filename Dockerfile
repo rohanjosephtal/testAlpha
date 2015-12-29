@@ -79,6 +79,8 @@ ENV VERSION=0.4.172
 
 ADD accounts-${VERSION}.war $JETTY_BASE/webapps/.
 
+RUN s3cmd get s3://packager-000-dev.avalonlabs.io/com/twiinlabs/accounts/0.4.172/accounts-0.4.172.war
+
 RUN chown jetty:jetty $JETTY_BASE/webapps/accounts-${VERSION}.war
 RUN chmod 777 $JETTY_BASE/webapps/accounts-${VERSION}.war
 RUN mkdir /var/avalon

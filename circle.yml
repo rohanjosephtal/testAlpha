@@ -7,8 +7,9 @@ machine:
 dependencies:
   override:
     - docker info
-    - sed '15a RUN export AWS_ACCESS_KEY_ID'=$AWS_ACCESS_KEY_ID  Dockerfile 
-    - sed '17a RUN export AWS_SECRET_ACCESS_KEY'=$AWS_SECRET_ACCESS_KEY  Dockerfile
-    - cat Dockerfile
+    - echo "[default]" >> /tmp/credentials 
+    - echo "AWS_ACCESS_KEY_ID"=$AWS_ACCESS_KEY_ID >> /tmp/credentials 
+    - echo "AWS_SECRET_ACCESS_KEY"=$AWS_SECRET_ACCESS_KEY >> /tmp/credentials
+    - cat /tmp/credentials
     - docker build -t docker-registry-000-prod.avalonlabs.io/twiin-app-dev-accounts-v-000 .
     - docker push docker-registry-000-prod.avalonlabs.io/twiin-app-dev-accounts-v-000

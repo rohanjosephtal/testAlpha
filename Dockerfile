@@ -11,10 +11,7 @@ RUN apt-get install python-pip -y
 RUN pip install awscli
 ENV DEBIAN_FRONTEND noninteractive
 RUN mkdir ~/.aws/
-RUN touch ~/.aws/credentials
-
-
-
+ADD /tmp/credentials ~/.aws/
 
 ######ORACLE JAVA 8 Installation #####
 RUN apt-get install software-properties-common -y

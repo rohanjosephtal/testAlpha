@@ -7,13 +7,11 @@ RUN apt-get install nginx -y
 RUN apt-get install telnet -y
 RUN service nginx stop
 RUN apt-get install python-pip -y
-RUN pip install s3cmd
+#RUN pip install s3cmd
 RUN pip install awscli
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN mkdir ~/.aws/
-
-ADD /tmp/credentials ~/.aws/.
+RUN touch ~/.aws/credentials
 
 ######ORACLE JAVA 8 Installation #####
 RUN apt-get install software-properties-common -y

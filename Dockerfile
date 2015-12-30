@@ -1,7 +1,8 @@
 FROM phusion/baseimage
 MAINTAINER Abhishek Amralkar & Rohan Joseph
 
-RUN echo $AWS_ACCESS_KEY_ID
+RUN export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+RUN export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install unzip -y

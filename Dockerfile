@@ -1,6 +1,8 @@
 FROM phusion/baseimage
 MAINTAINER Abhishek Amralkar & Rohan Joseph
 
+RUN echo $AWS_ACCESS_KEY_ID
+
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install unzip -y
 RUN apt-get install nginx -y
@@ -73,6 +75,7 @@ ADD start_jetty.sh /etc/service/jetty/run
 RUN chmod a+x /etc/service/jetty/run
 
 WORKDIR $JETTY_BASE/webapps
+
 
 
 ENV VERSION=0.4.172

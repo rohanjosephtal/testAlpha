@@ -21,6 +21,8 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
 RUN apt-get install oracle-java8-installer -y
 
 
+
+
 ##########Jetty Installation######
 
 RUN groupadd -r jetty && useradd -r -g jetty jetty

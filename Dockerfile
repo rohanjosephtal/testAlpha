@@ -10,7 +10,7 @@ RUN apt-get install python-pip -y
 #RUN pip install s3cmd
 RUN pip install awscli
 ENV DEBIAN_FRONTEND noninteractive
-RUN ~/.aws/
+RUN mkdir ~/.aws/
 RUN touch ~/.aws/credentials
 
 

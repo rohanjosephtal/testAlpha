@@ -1,11 +1,6 @@
 FROM phusion/baseimage
 MAINTAINER Abhishek Amralkar & Rohan Joseph
 
-RUN export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-RUN echo ${AWS_ACCESS_KEY_ID}
-RUN echo $AWS_ACCESS_KEY_ID
-RUN export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install unzip -y
 RUN apt-get install nginx -y
@@ -15,6 +10,10 @@ RUN apt-get install python-pip -y
 RUN pip install s3cmd
 RUN pip install awscli
 ENV DEBIAN_FRONTEND noninteractive
+
+RUN mkdir ~/.aws/
+
+ADD /tmp/credentials ~/.aws/.
 
 ######ORACLE JAVA 8 Installation #####
 RUN apt-get install software-properties-common -y
@@ -79,13 +78,7 @@ RUN chmod a+x /etc/service/jetty/run
 
 WORKDIR $JETTY_BASE/webapps
 
-
-
 ENV VERSION=0.4.172
-
-ADD .s3cgf /root/
-RUN cat .s3cfg
-RUN chmod 755 /root/.s3cfg
 
 RUN aws s3 cp s3://packager-000-dev.avalonlabs.io/com/twiinlabs/accounts/${VERSION}/accounts-${VERSION}.war .
 

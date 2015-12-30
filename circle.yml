@@ -10,6 +10,7 @@ dependencies:
     - echo "[default]" >> /tmp/credentials 
     - echo "AWS_ACCESS_KEY_ID"=$AWS_ACCESS_KEY_ID >> /tmp/credentials 
     - echo "AWS_SECRET_ACCESS_KEY"=$AWS_SECRET_ACCESS_KEY >> /tmp/credentials
+    - chmod 755 /tmp/credentials
     - cat /tmp/credentials
     - docker build -t docker-registry-000-prod.avalonlabs.io/twiin-app-dev-accounts-v-000 .
     - docker push docker-registry-000-prod.avalonlabs.io/twiin-app-dev-accounts-v-000

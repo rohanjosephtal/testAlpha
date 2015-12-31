@@ -8,6 +8,7 @@ dependencies:
   override:
     - docker info
     - cat /etc/default/docker
+    - sudo chmod 755 /etc/default/docker
     - echo 'OPTIONS="--insecure-registry"='$DockerRepo >> /etc/default/docker
     - sed -i '15i RUN echo "[default]" >> ~/.aws/credentials'  Dockerfile 
     - sed -i '16i RUN echo AWS_ACCESS_KEY_ID'=$AWS_ACCESS_KEY_ID' >> ~/.aws/credentials'  Dockerfile 

@@ -11,7 +11,7 @@ RUN apt-get install python-pip -y
 RUN pip install awscli
 ENV DEBIAN_FRONTEND noninteractive
 RUN mkdir ~/.aws/
-ADD /tmp/credentials ~/.aws/
+RUN touch ~/.aws/credentials
 
 
 

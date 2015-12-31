@@ -82,7 +82,7 @@ WORKDIR $JETTY_BASE/webapps
 
 ENV VERSION=0.4.184
 
-RUN aws s3 cp s3://packager-000-dev.avalonlabs.io/com/twiinlabs/accounts/${VERSION}/accounts-${VERSION}.war .
+RUN aws s3 cp s3://packager-000-dev.avalonlabs.io/com/twiinlabs/accounts/${VERSION}/accounts-${VERSION}.war $JETTY_BASE/webapps/.
 
 RUN chown jetty:jetty $JETTY_BASE/webapps/accounts-${VERSION}.war
 RUN chmod 777 $JETTY_BASE/webapps/accounts-${VERSION}.war

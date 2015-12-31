@@ -13,6 +13,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN mkdir ~/.aws/
 ADD /tmp/credentials ~/.aws/
 
+
+
+
+
+
 ######ORACLE JAVA 8 Installation #####
 RUN apt-get install software-properties-common -y
 RUN add-apt-repository ppa:webupd8team/java -y
